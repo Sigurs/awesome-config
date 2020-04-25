@@ -72,7 +72,8 @@ end
 
 run_once({ "urxvtd", "unclutter -root", 
            "nm-applet", "blueman-applet", 
-           "redshift -O 3200", "solaar", "nextcloud",
+           "redshift -x && redshift -O 3200",
+           "nextcloud",
            "compton --backend glx --paint-on-overlay --glx-no-stencil --vsync opengl-swc --unredir-if-possible"
         }) -- entries must be separated by commas
 

@@ -96,10 +96,21 @@ local markup = lain.util.markup
 -- Textclock
 os.setlocale(os.getenv("LANG")) -- to localize the clock
 local clockicon = wibox.widget.imagebox(theme.widget_clock)
-local mytextclock = wibox.widget.textclock(markup("#7788af", "%A %d %B ") .. markup("#ab7367", ">") .. markup("#de5e1e", " %H:%M "))
-mytextclock.font = theme.font
+--local localtextclock = wibox.widget.textclock(markup("#7788af", "%A %d %B ") .. markup("#ab7367", ">") .. markup("#de5e1e", " %H:%M ") .. markup("#de5e1e", " (Local)"))
+local localtextclock = wibox.widget.textclock(markup("#7788af", "%A %d %B ") .. markup("#ab7367", ">"), 60, "Europe/Helsinki")
+local esttextclock = wibox.widget.textclock(markup("#de5e1e", " %H:%M") .. markup("#de5e1e", " (EST)"), 60, "America/Cancun")
+local londontextclock = wibox.widget.textclock(markup("#ab7367", " |") .. markup("#de5e1e", " %H:%M") .. markup("#de5e1e", " (LON)"), 60, "Europe/London")
+local oslotextclock = wibox.widget.textclock(markup("#ab7367", " |") .. markup("#de5e1e", " %H:%M") .. markup("#de5e1e", " (OSL)"), 60, "Europe/Oslo")
+local helsinkitextclock = wibox.widget.textclock(markup("#ab7367", " |") .. markup("#de5e1e", " %H:%M") .. markup("#de5e1e", " (HEL)"), 60, "Europe/Helsinki")
+--local esttextclock = wibox.widget.textclock(" %H:%M (EST)"))
+localtextclock.font = theme.font
+esttextclock.font = theme.font
+londontextclock.font = theme.font
+oslotextclock.font = theme.font
+helsinkitextclock.font = theme.font
 
 -- Calendar
+--[[ dont want this.
 theme.cal = lain.widget.cal({
     attach_to = { mytextclock },
     notification_preset = {
@@ -108,6 +119,7 @@ theme.cal = lain.widget.cal({
         bg   = theme.bg_normal
     }
 })
+--]]
 
 -- Weather
 local weathericon = wibox.widget.imagebox(theme.widget_weather)
@@ -263,7 +275,7 @@ function theme.at_screen_connect(s)
     gears.wallpaper.maximized(wallpaper, s, true)
 
     -- Tags
-    awful.tag(awful.util.tagnames, s, awful.layout.layouts)
+    awful.tag(awful.util.tagnames, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -303,10 +315,10 @@ function theme.at_screen_connect(s)
             wibox.widget.systray(),
             --mailicon,
             --theme.mail.widget,
-            netdownicon,
-            netdowninfo,
-            netupicon,
-            netupinfo.widget,
+            --netdownicon,
+            --netdowninfo,
+            --netupicon,
+            --netupinfo.widget,
             volicon,
             theme.volume.widget,
             memicon,
@@ -315,14 +327,18 @@ function theme.at_screen_connect(s)
             cpu.widget,
             --fsicon,
             --theme.fs.widget,
-            weathericon,
-            theme.weather.widget,
-            tempicon,
-            temp.widget,
-            baticon,
-            bat.widget,
+            --weathericon,
+            --theme.weather.widget,
+            --tempicon,
+            --temp.widget,
+            --baticon,
+            --bat.widget,
             clockicon,
-            mytextclock,
+            localtextclock,
+            esttextclock,
+            londontextclock,
+            oslotextclock,
+            helsinkitextclock
         },
     }
 

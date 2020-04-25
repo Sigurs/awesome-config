@@ -15,8 +15,8 @@ local os = os
 local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 local theme                                     = {}
-theme.confdir                                   = os.getenv("HOME") .. "/.config/awesome/themes/multicolor"
-theme.wallpaper                                 = theme.confdir .. "/wall.png"
+theme.confdir                                   = os.getenv("HOME") .. "/.config/awesome/themes/bragi"
+theme.wallpaper                                 = theme.confdir .. "/wall.jpg"
 theme.font                                      = "Terminus 8"
 theme.menu_bg_normal                            = "#000000"
 theme.menu_bg_focus                             = "#000000"
@@ -97,11 +97,11 @@ local markup = lain.util.markup
 os.setlocale(os.getenv("LANG")) -- to localize the clock
 local clockicon = wibox.widget.imagebox(theme.widget_clock)
 --local localtextclock = wibox.widget.textclock(markup("#7788af", "%A %d %B ") .. markup("#ab7367", ">") .. markup("#de5e1e", " %H:%M ") .. markup("#de5e1e", " (Local)"))
-local localtextclock = wibox.widget.textclock(markup("#7788af", "%A %d %B ") .. markup("#ab7367", ">"), 60, "Europe/Helsinki")
-local esttextclock = wibox.widget.textclock(markup("#de5e1e", " %H:%M") .. markup("#de5e1e", " (EST)"), 60, "America/Cancun")
-local londontextclock = wibox.widget.textclock(markup("#ab7367", " |") .. markup("#de5e1e", " %H:%M") .. markup("#de5e1e", " (LON)"), 60, "Europe/London")
-local oslotextclock = wibox.widget.textclock(markup("#ab7367", " |") .. markup("#de5e1e", " %H:%M") .. markup("#de5e1e", " (OSL)"), 60, "Europe/Oslo")
-local helsinkitextclock = wibox.widget.textclock(markup("#ab7367", " |") .. markup("#de5e1e", " %H:%M") .. markup("#de5e1e", " (HEL)"), 60, "Europe/Helsinki")
+local localtextclock = wibox.widget.textclock(markup("#7788af", "%A %d %B ") .. markup("#ab7367", ">"), 1, "Europe/Helsinki")
+local esttextclock = wibox.widget.textclock(markup("#de5e1e", " %H:%M") .. markup("#de5e1e", " (EST)"), 1, "America/Cancun")
+local londontextclock = wibox.widget.textclock(markup("#ab7367", " |") .. markup("#de5e1e", " %H:%M") .. markup("#de5e1e", " (LON)"), 1, "Europe/London")
+local oslotextclock = wibox.widget.textclock(markup("#ab7367", " |") .. markup("#de5e1e", " %H:%M") .. markup("#de5e1e", " (OSL)"), 1, "Europe/Oslo")
+local helsinkitextclock = wibox.widget.textclock(markup("#ab7367", " |") .. markup("#de5e1e", " %H:%M") .. markup("#de5e1e", " (HEL)"), 1, "Europe/Helsinki")
 --local esttextclock = wibox.widget.textclock(" %H:%M (EST)"))
 localtextclock.font = theme.font
 esttextclock.font = theme.font

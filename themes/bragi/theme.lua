@@ -1,5 +1,8 @@
 --[[
 
+     Bragi Awesome WM theme by github.com/sigurs.
+
+     Based on,
      Multicolor Awesome WM theme 2.0
      github.com/lcpz
 
@@ -275,7 +278,11 @@ function theme.at_screen_connect(s)
     gears.wallpaper.maximized(wallpaper, s, true)
 
     -- Tags
-    awful.tag(awful.util.tagnames, s, awful.layout.layouts[1])
+    awful.tag(
+       awful.util.tagnames,
+       s,
+       awful.layout.layouts[1] -- Floating as default layout.
+    )
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
